@@ -31,11 +31,11 @@ const makeBook = (bookTitle, bookAuthor, bookYear, bookIsComplete) => {
     textTitle.innerText = bookTitle;
 
     const textAuthor = document.createElement("p");
-    textAuthor.classList.add("author")
+    textAuthor.classList.add("author");
     textAuthor.innerText = bookAuthor;
 
     const textYear = document.createElement("p");
-    textYear.classList.add("year")
+    textYear.classList.add("year");
     textYear.innerText = bookYear;
 
     const containerDiv = document.createElement("div");
