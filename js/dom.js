@@ -84,10 +84,13 @@ const addBookToComplete = (taskElement) => {
 }
 
 const removeBook = (taskElement) => {
-    const bookPosition = findBookIndex(taskElement[BOOKSHELF_BOOK_ID]);
-    bookshelf.splice(bookPosition, 1);
+    if ((confirm("Apakah Anda yakin?") === true)) {
+        const bookPosition = findBookIndex(taskElement[BOOKSHELF_BOOK_ID]);
+        bookshelf.splice(bookPosition, 1);
+        
+        taskElement.remove();
+    }
 
-    taskElement.remove();
     updateDataToStorage();
 }
 
@@ -123,4 +126,23 @@ const createUndoButton = () => {
     return createButton("green", "Belum selesai dibaca", (event) => {
         undoBookFromComplete(event.target.parentElement.parentElement);
     });
+}
+
+const searchBook = () => {
+    const inputSearchBook = document.getElementById("searchBookTitle").value;
+
+    const container = document.querySelectorAll(".book_item");
+
+    for (let i = 0; i < container.length; i++) {
+        if (inputSearchBook === "") {
+            const indexContainer = container[i];
+            indexContainer.removeAttribute("style");
+        } else if (bookshelf[i].bookTitle !== inputSearchBook) {
+            const indexContainer = container[i];
+            indexContainer.setAttribute("style", "display: none;");
+        } else {
+            const indexContainer = container[i];
+            indexContainer.removeAttribute("style");
+        }
+    }
 }
