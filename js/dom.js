@@ -129,20 +129,16 @@ const createUndoButton = () => {
 }
 
 const searchBook = () => {
-    const inputSearchBook = document.getElementById("searchBookTitle").value;
-
-    const container = document.querySelectorAll(".book_item");
-
-    for (let i = 0; i < container.length; i++) {
-        if (inputSearchBook === "") {
-            const indexContainer = container[i];
-            indexContainer.removeAttribute("style");
-        } else if (bookshelf[i].bookTitle !== inputSearchBook) {
-            const indexContainer = container[i];
-            indexContainer.setAttribute("style", "display: none;");
+    const inputSearchBook = document.getElementById("searchBookTitle");
+    const searchBook = inputSearchBook.value.toLowerCase();
+    const books = document.querySelectorAll(".book_item");
+    
+    Array.from(books).forEach((book) => {
+        const textTitle = book.firstElementChild.textContent;
+        if (textTitle.toLowerCase().indexOf(searchBook) != -1) {
+            book.style.display = "block";
         } else {
-            const indexContainer = container[i];
-            indexContainer.removeAttribute("style");
+            book.style.display = "none";
         }
-    }
+    });
 }
