@@ -133,12 +133,14 @@ main {
 }
 
 .book_shelf {
-  margin: 16px 0 0 0;
+  margin: 16px 0 0;
   border: 1px solid black;
   padding: 16px;
   border-radius: 10px;
-  width: 50%;
-  margin-left: auto;
+  width: 25%;
+  float: left;
+  margin-left: 17.5px;
+  margin-top: auto;
 }
 
 .book_shelf > h2 {
@@ -177,4 +179,33 @@ p {
 .book_shelf > .book_list > .book_item > .action > .red {
   background-color: darkred;
   color: white;
+}
+
+@media screen and (max-width: 1450px) {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  main {
+    max-width: 800px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  .input_section {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 100%;
+  }
+  .book_shelf {
+    margin: 16px 0 0 0;
+    border: 1px solid black;
+    padding: 16px;
+    border-radius: 10px;
+    width: 100%;
+  }
 }
